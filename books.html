@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+
+        body{
+            width: 80vw;
+            margin: 0 auto;
+        }
+
+        input::placeholder{
+            color: black;
+        }
+        input{
+            border: none;
+        }
+        .edit{
+            border: 1px solid darkgray;
+            transition: border 0.5s ease-in-out;
+        }
+        .edit:hover{
+            border: 1px solid black;
+        }
+        .imageSize{
+            height: 310px;
+            width: 200px;
+            object-fit: contain;
+        }
+        #bookList{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-evenly;
+            align-content: flex-start;
+            transform: translateY(-40px);
+
+        }
+
+        .values{
+            display: flex;
+            flex-flow: column nowrap;
+            margin-left: 15px;
+        }
+        .values > input {
+            margin-top: 15.5px;
+        }
+
+        .values > #readingList {
+            margin-top: 15.5px;
+        }
+        .bookContainer {
+            margin: 10px;
+            padding: 30px 20px 20px 20px;
+            height: 605px;
+            border: 1px solid darkgray;
+            border-radius: 15px;
+            box-shadow: 4px 4px 4px rgba(169, 169, 169, 0.4);
+        }
+        .options {
+            display: flex;
+            justify-content: flex-end;
+            transform: translate(0, -15px);
+        }
+        .options > .child {
+            margin-left: 15px;
+            font-size: 12px;
+        }
+        .options > .delBtn {
+            margin-left: 15px;
+            font-size: 16px;
+            color: darkgray;
+
+        }
+        .heading{
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            margin-top: 2vh;
+            margin-bottom: 20px;
+        }
+
+        form  {
+            display: flex;
+            flex-flow: column nowrap;
+            width: 35vw;
+            margin: 0 auto;
+        }
+
+        form > div {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            margin-top: 10px;
+
+        }
+        div > #readingList {
+            width: 145.5px;
+            text-align: center;
+        }
+        
+        #formContainer {
+            padding-bottom: 20px;
+            border-bottom: 1px solid darkgray;
+        }
+
+        div > input {
+            width: 180px;
+            border-radius: 4px;
+        }
+
+        input::placeholder{
+            color: darkgray;
+
+        }
+
+        form > button {
+            width: 160px;
+            margin: 0 auto;
+            margin-top: 10px;
+            z-index: 1
+        }
+
+        .bookInfo{
+            display: flex;
+            flex-flow: row wrap;
+            overflow: hidden;
+        }
+
+        .bookItem{
+            transform: scale(0.8);
+            transition: transform 1.5s ease-out, opacity 1s ease-out;
+        }
+
+
+        button {
+            border: none;
+            padding: 9px;
+            border-radius: 9px;
+            background-color: rgb(255, 208, 86);
+            transition: background-color 0.3s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        button:hover {
+            border: none;
+            padding: 9px;
+            border-radius: 9px;
+            background-color: rgb(5, 200, 212);
+            color: white;
+            cursor: pointer;
+        }
+
+        .formButton {
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: rgb(213, 213, 213);
+            transition: background-color 0.3s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        .formButton:hover {
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: darkgray;
+            color: white;
+            cursor: pointer;
+        }
+
+
+        img.imageSize {
+            background-color: lightgray;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .delBtn:hover {
+            color: black;
+            cursor: pointer;
+        }
+        .imageContainer{
+            margin-top: 15px;
+            display: flex;
+            flex-flow: column nowrap;
+            align-content: center;
+            align-items: center;
+
+        }
+        .editUrl{
+            width: 194px;
+            border-radius: 0px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="heading"><strong>Book Catalogue</strong></div>
+    <div id="formContainer">
+        <form>
+            <div>
+                <!-- <label for="title">Enter book title*:</label> -->
+                <input  type="text" name="title" id="title" class="edit" placeholder="Enter book title*" required>    
+            </div>
+            <div>
+                <!-- <label for="author">Enter author full name*:</label> -->
+                <input type="text" name="author" id="author" class="edit" placeholder="Enter author full name*" required>    
+            </div>
+            <div>
+                <!-- <label for="genre">Enter book genre:</label> -->
+                <input type="text" name="genre" id="genre" class="edit" placeholder="Enter book genre">    
+            </div>
+            <div>
+                <!-- <label for="year">Enter book publish year</label> -->
+                <input type="text" name="year" id="year" class="edit" placeholder="Enter book publish year">    
+            </div>
+            <div>
+                <!-- <label for="rating">Enter Good Reads rating</label> -->
+                <input type="text" name="rating" id="rating" class="edit" placeholder="Enter 'Good Reads' rating" >    
+            </div>
+            <div>
+                <!-- <label for="ratingNum">Enter number of ratings</label> -->
+                <input type="text" name="ratingNum" id="ratingNum" class="edit" placeholder="Enter number of ratings">    
+            </div>
+            <div>
+                <!-- <label for="imageURL">Enter book cover image URL</label> -->
+                <input type="text" name="imageURL" id="imageURL" class="edit" placeholder="Enter book cover image URL">    
+            </div>
+            <div>
+                <!-- <label for="readingList">Book status</label> -->
+                <select id="readingList">
+                    <option value="">--Select Status--</option>
+                    <option value="interested">Interested</option>
+                    <option value="progress">In progress</option>
+                    <option value="finished">Finished</option>
+                </select>    
+            </div>
+            <button type="button" onclick="addBook()">Create new book object</button>
+        </form>
+    </div>
+    <div id="bookList"></div>
+    <div id="bottom"></div>
+<script type="text/javascript" src="books.js"></script>
+</body>
+</html>
